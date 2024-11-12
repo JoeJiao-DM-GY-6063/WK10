@@ -1,10 +1,13 @@
 // TODO: add other files
 // TODO: add sound to exercise 1
 
-let bloop;
+let bloop = [];
 
 function preload() {
-  bloop = loadSound("../assets/bloop-0.mp3");
+  bloop.push = loadSound("../assets/bloop-0.mp3");
+  bloop.push = loadSound("../assets/bloop-1.mp3");
+  bloop.push = loadSound("../assets/bloop-2.mp3");
+  bloop.push = loadSound("../assets/bloop-3.mp3");
 }
 
 function setup() {
@@ -12,9 +15,10 @@ function setup() {
 }
 
 function draw() {
-  background(220, 20, 120);
+  background(120, 120, 120);
 }
 
 function mouseClicked() {
-  bloop.play();
+  let mBloop = random(bloops);
+  mBloop.play();
 }

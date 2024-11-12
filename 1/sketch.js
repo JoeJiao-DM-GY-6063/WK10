@@ -1,5 +1,13 @@
 // TODO: classify it
 
+class Movey {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.vel = createVector(random(-10, 10), random(-10, 10));
+    this.rad = random(15, 25);
+  }
+}
+
 let moves = [];
 
 function setup() {
@@ -8,14 +16,15 @@ function setup() {
 }
 
 function draw() {
-  background(200, 20, 120);
+  background(120, 120, 120);
   for (let idx = 0; idx < moves.length; idx++) {
     let mMove = moves[idx];
     mMove.pos = p5.Vector.add(mMove.pos, mMove.vel);
+
+    
     if (mMove.pos.x > width - mMove.rad || mMove.pos.x < mMove.rad) {
       mMove.vel.x *= -1;
     }
-
     if (mMove.pos.y > height - mMove.rad || mMove.pos.y < mMove.rad) {
       mMove.vel.y *= -1;
     }
@@ -24,10 +33,12 @@ function draw() {
   }
 }
 
+
 function mousePressed() {
-  moves.push({
-    pos: createVector(mouseX, mouseY),
-    vel: createVector(random(-10, 10), random(-10, 10)),
-    rad: random(15, 25),
-  });
+  moves.push(new Movey(mouseX, mouseY));
+}
+
+
+function keyPressed() {
+  moves.push(new Movey(width / 2, height / 2));
 }
